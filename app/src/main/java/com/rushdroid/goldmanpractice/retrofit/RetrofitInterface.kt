@@ -7,5 +7,8 @@ import retrofit2.http.Query
 
 interface RetrofitInterface {
     @GET("apod")
-    fun getNASADetail(@Query ("api_key") apiKey: String, @Query("date") date: String): Observable<NasaModel>
+    fun getNASADetail(
+        @Query("api_key") apiKey: String,
+        @Query("date") date: String
+    ): Observable<NasaModel>
 }
