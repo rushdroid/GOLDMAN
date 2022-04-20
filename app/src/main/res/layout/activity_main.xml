@@ -67,6 +67,25 @@
 
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/imgFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPickDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnPickDate"
+        app:layout_constraintTop_toTopOf="@+id/btnPickDate"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <Button
+        android:id="@+id/btnFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fav"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPickDate"
+        app:layout_constraintEnd_toStartOf="@+id/btnPickDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnPickDate" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

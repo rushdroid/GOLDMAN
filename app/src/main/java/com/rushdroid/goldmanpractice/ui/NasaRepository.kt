@@ -1,10 +1,10 @@
 package com.rushdroid.goldmanpractice.ui
 
-import NasaModel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.rushdroid.goldmanpractice.model.NasaModel
 import com.rushdroid.goldmanpractice.retrofit.RetrofitInterface
 import com.rushdroid.goldmanpractice.retrofit.RetrofitServiceGenerator
 import com.rushdroid.goldmanpractice.room.NasaDB
@@ -27,19 +27,41 @@ class NasaRepository(application: Application) {
     internal var disposable: Disposable? = null
 
     fun fetchNasaData(strDate: String) {
+        val data = db.parentDao().getNasaDataFromDate(strDate)
+        if (data.size > 0) {
+            nasaModel.postValue(data.get(0))
+            return
+        }
 
         disposable = retrofitServiceGenerator.createService(RetrofitInterface::class.java)
             .getNASADetail("Lb4cjMqpf2gFLd6Tmue2fT7wEvL5Cn221lE7MHQh", strDate)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                nasaModel.postValue(it)
+                insert(it)
+                val data = db.parentDao().getNasaDataFromDate(strDate)
+                nasaModel.postValue(data.get(0))
             }, {
                 Log.d("TAG", "fetchNasaData: ERROR" + it)
             })
     }
 
-    fun insertAll(list: List<NasaModel>) {
-        db.parentDao().insertAll(list)
+    fun insert(nasaModel: NasaModel) {
+        db.parentDao().insert(nasaModel)
+    }
+
+    fun getDataFromDate(strDate: String): List<NasaModel>{
+        val data = db.parentDao().getNasaDataFromDate(strDate)
+        return data
+    }
+
+    fun update(nasaModel: NasaModel) {
+        val result = db.parentDao().updateNasaModel(nasaModel)
+        Log.d("TAG", "update: " + result)
+    }
+
+
+    fun getFav(isFav: Boolean): List<NasaModel> {
+        return db.parentDao().getFavouriteData(isFav)
     }
 }

@@ -1,10 +1,10 @@
 package com.rushdroid.goldmanpractice.room
 
-import NasaModel
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.rushdroid.goldmanpractice.model.NasaModel
 
 
 @Database(entities = [NasaModel::class], version = 1, exportSchema = false)

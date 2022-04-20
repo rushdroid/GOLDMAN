@@ -1,11 +1,13 @@
+package com.rushdroid.goldmanpractice.model
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "NasaTable")
+@Entity(tableName = "NasaModel")
 data class NasaModel(
     @PrimaryKey(autoGenerate = true)
-    var uId: Int = 0,
+    var uId: Int = -1,
     var isFavourite: Boolean = false,
     @SerializedName("copyright") val copyright: String,
     @SerializedName("date") val date: String,

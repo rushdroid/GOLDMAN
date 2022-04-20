@@ -1,6 +1,6 @@
 package com.rushdroid.goldmanpractice.retrofit
 
-import NasaModel
+import com.rushdroid.goldmanpractice.model.NasaModel
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

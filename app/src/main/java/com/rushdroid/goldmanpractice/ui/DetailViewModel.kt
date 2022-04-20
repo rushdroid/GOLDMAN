@@ -1,12 +1,11 @@
 package com.rushdroid.goldmanpractice.ui
 
-import NasaModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.rushdroid.goldmanpractice.model.NasaModel
 
 class DetailViewModel(application: Application) : AndroidViewModel(application) {
-
 
     private val nasaRepository = NasaRepository(application)
 
@@ -18,9 +17,27 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         nasaRepository.fetchNasaData(strDate)
     }
 
-    fun insertAll(list: List<NasaModel>) {
-        nasaRepository.insertAll(list)
+    fun getDataFromDate(strDate: String): List<NasaModel>{
+        return  nasaRepository.getDataFromDate(strDate)
     }
+
+
+    fun insert(nasaModel: NasaModel) {
+        nasaRepository.insert(nasaModel)
+    }
+
+    fun delete(nasaModel: NasaModel) {
+        nasaRepository.insert(nasaModel)
+    }
+
+    fun update(nasaModel: NasaModel) {
+        nasaRepository.update(nasaModel)
+    }
+
+    fun getFav(isFav: Boolean): List<NasaModel> {
+        return nasaRepository.getFav(isFav)
+    }
+
 
     override fun onCleared() {
         super.onCleared()
