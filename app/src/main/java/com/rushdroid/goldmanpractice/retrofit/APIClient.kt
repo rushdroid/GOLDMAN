@@ -1,4 +1,4 @@
-package com.rushdroid.goldmanpractice.ui.retrofit
+package com.rushdroid.goldmanpractice.retrofit
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rushdroid.goldmanpractice.ui.retrofit.RetrofitInterface
-import com.rushdroid.goldmanpractice.ui.retrofit.RetrofitServiceGenerator
+import com.rushdroid.goldmanpractice.retrofit.RetrofitInterface
+import com.rushdroid.goldmanpractice.retrofit.RetrofitServiceGenerator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -32,7 +32,6 @@ class DetailViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 nasaModel.postValue(it)
-                Log.d("TAG", "fetchNasaData: " + it)
             }, {
                 Log.d("TAG", "fetchNasaData: ERROR" + it)
             })

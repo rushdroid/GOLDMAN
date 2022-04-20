@@ -1,10 +1,8 @@
-package com.rushdroid.goldmanpractice.ui.retrofit
+package com.rushdroid.goldmanpractice.retrofit
 
 import NasaModel
 import io.reactivex.Observable
-import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RetrofitInterface {
