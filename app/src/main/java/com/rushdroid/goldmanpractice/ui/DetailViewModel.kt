@@ -23,6 +23,8 @@ class DetailViewModel : ViewModel() {
     private val retrofitServiceGenerator: RetrofitServiceGenerator = RetrofitServiceGenerator()
     private var disposable: Disposable? = null
 
+
+
     fun fetchNasaData(strDate: String) {
         disposable = retrofitServiceGenerator.createService(RetrofitInterface::class.java)
             .getNASADetail("Lb4cjMqpf2gFLd6Tmue2fT7wEvL5Cn221lE7MHQh",strDate)
